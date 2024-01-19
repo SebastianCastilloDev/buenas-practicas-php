@@ -74,10 +74,11 @@ PSR-4 autoloading configured. Use "namespace Tantrum\BuenasPracticas;" in src/
 Include the Composer autoloader with: require 'vendor/autoload.php';
 ```
 
-Esto nos creará los siguientes elementos.
-`src/`: Este será el directorio donde escribiremos la lógica de nuestra aplicación.
-`vendor/`: Este será el directorio donde se guardarán las dependencias del proyecto.
-`composer.json`: Es un archivo que describe nuestro proyecto, en términos de su configuración y sus dependencias, así como también nos permite escribir scripts para ejecutar comandos a través de la CLI de Composer. Es un archivo que en ocasiones vamos a manipular manualmente. **Nota:** Este archivo es lo que package.json es a Javascript cuando se ejecuta en un entorno NodeJS.
+Esto nos creará los siguientes elementos:
+
+* `src/`: Este será el directorio donde escribiremos la lógica de nuestra aplicación.
+* `vendor/`: Este será el directorio donde se guardarán las dependencias del proyecto.
+* `composer.json`: Es un archivo que describe nuestro proyecto, en términos de su configuración y sus dependencias, así como también nos permite escribir scripts para ejecutar comandos a través de la CLI de Composer. Es un archivo que en ocasiones vamos a manipular manualmente. **Nota:** Este archivo es lo que package.json es a Javascript cuando se ejecuta en un entorno NodeJS.
 
 Observemos el campo autoload del archivo `composer.json`:
 
