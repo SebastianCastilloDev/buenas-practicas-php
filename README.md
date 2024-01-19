@@ -94,3 +94,39 @@ Observemos el campo autoload del archivo `composer.json`:
 
 PSR-4 específica un estándar de carga automática que define un mapeo de espacio de nombres a directorios que ayuda a cargar automáticamente las clases del proyecto.
 
+## Creando una clase
+
+Para poder apreciar las buenas prácticas, escribiremos esta clase, LLENA DE MALAS PRÁCTICAS!!.
+
+
+Archivo: `src/Libro.php`
+```php
+<?php
+class Libro {
+    private $titulo;
+    private $autor;
+    public function __construct($titulo, $autor) {
+        $this->titulo = $titulo;
+        $this->autor = $autor;
+    }
+    public function getTitulo() {
+        return $this->titulo;
+    }
+    public function getAutor(){
+        return $this->autor;
+    }
+    public function calcularCostoEnvio(float $distancia, float $factorCosto):float {
+        $costoEnvio = $distancia * $factorCosto;
+        return $costoEnvio;
+    }
+}
+?>
+```
+Esta clase representa un libro y contiene información relevante sobre él. Tiene dos propiedades privadas, **\$titulo** y **$autor**, que son establecidas a través del constructor al momento de crear una instancia de la clase. La clase proporciona métodos públicos para obtener el título y el autor del libro, llamados **getTitulo** y **getAutor**, respectivamente.
+
+Además de la información básica del libro, la clase incluye un método adicional llamado **calcularCostoEnvio**. Este método acepta dos parámetros, **\$distancia** y **\$factorCosto**, ambos de tipo float. La función de este método es calcular el costo de envío del libro en función de la distancia y un factor de costo proporcionados. El resultado, representado por la variable **\$costoEnvio**, es devuelto como un valor de tipo float.
+
+En resumen, la clase Libro encapsula la información esencial de un libro y proporciona la funcionalidad adicional de calcular el costo de envío, ofreciendo así una representación básica y funcional de un libro en un contexto más amplio.
+
+**NOTA:** Observe que en el método **calcularCostoEnvio** hemos indicado los tipos de datos que se pasan por parámetro, así como el tipo de dato que devuelve el método y no así en los otros métodos ni en el constructor.
+
