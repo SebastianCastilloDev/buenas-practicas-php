@@ -1,0 +1,17 @@
+{
+    "name": "tantrum/buenas-practicas",
+    "description": "My new project",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Tantrum\\BuenasPracticas\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sebastian Castillo",
+            "email": "tantrum5535@gmail.com"
+        }
+    ],
+    "require": {}
+}
