@@ -5,6 +5,17 @@ Esta es una guía basada en diversa documentación y en la lista de reproduccion
 
 No es una guía estricta, son recomendaciones.
 
+## Tabla de contenidos
+
+[Buenas prácticas con PHP](#buenas-prácticas-con-php)
+[Composer](#composer)
+[Iniciando un proyecto](#iniciando-un-proyecto)
+[Creando una clase](#creando-una-clase)
+[Creando un index.php](#creando-un-indexphp)
+[Importancia del namespace](#importancia-del-namespace)
+
+
+
 **Nota: Se recomienda el uso del idioma inglés al momento de desarrollar.**
 
 Lo anterior tiene dos razones, la primera es que es por lejos el idioma más extendido en el mundo del desarrollo. Y la segunda es que muchos frameworks ejecutan instrucciones basadas en el idioma inglés. Como por ejemplo:
@@ -130,3 +141,79 @@ En resumen, la clase Libro encapsula la información esencial de un libro y prop
 
 **NOTA:** Observe que en el método **calcularCostoEnvio** hemos indicado los tipos de datos que se pasan por parámetro, así como el tipo de dato que devuelve el método y no así en los otros métodos ni en el constructor.
 
+## Creando un index.php
+
+Crearemos una nueva carpeta public, ya que es en esta carpeta donde serviremos los archivos finalmente hacia el cliente.
+
+Archivo: `public/index.php`
+```php
+<?php
+
+require_once dirname(__DIR__) . '/vendor/autoload.php'; // Incluye el autoloader de Composer
+
+use Tantrum\BuenasPracticas\Libro;
+
+// Crea una instancia de la clase Libro
+$miLibro = new Libro("Título del Libro", "Autor del Libro");
+
+// Imprime información del libro
+echo "Libro:";
+echo "Título: " . $miLibro->getTitulo();
+echo "Autor: " . $miLibro->getAutor();
+
+// Calcula y muestra el costo de envío
+$distanciaEnvio = 150.5; // Distancia en kilómetros
+$factorCostoEnvio = 100.1; // Factor de costo
+$costoEnvio = $miLibro->calcularCostoEnvio($distanciaEnvio, $factorCostoEnvio);
+
+echo "Costo de Envío:";
+echo "Distancia: " . $distanciaEnvio . " km";
+echo "Factor de Costo: " . $factorCostoEnvio;
+echo "Costo de Envío: $" . $costoEnvio;
+```
+
+## Importancia del namespace
+
+Al intentar ejecutar esto con:
+`php -S localhost:3000`
+e ingresando la siguiente URL:
+`http://localhost:3000/public`
+Veremos lo siguiente en nuestra terminal:
+
+```bash
+tantrum@ubuntulinux:~/coding/php/buenas-practicas$ php -S localhost:3000
+[Fri Jan 19 20:34:33 2024] PHP 8.1.2-1ubuntu2.14 Development Server (http://localhost:3000) started
+[Fri Jan 19 20:34:36 2024] 127.0.0.1:37168 Accepted
+[Fri Jan 19 20:34:36 2024] 127.0.0.1:37168 [404]: GET / - No such file or directory
+[Fri Jan 19 20:34:36 2024] 127.0.0.1:37168 Closing
+[Fri Jan 19 20:34:45 2024] 127.0.0.1:53148 Accepted
+[Fri Jan 19 20:34:48 2024] PHP Fatal error:  Uncaught Error: Class "Tantrum\BuenasPracticas\Libro" not found in /home/tantrum/coding/php/buenas-practicas/public/index.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/tantrum/coding/php/buenas-practicas/public/index.php on line 8
+[Fri Jan 19 20:34:48 2024] 127.0.0.1:53148 [500]: GET /public - Uncaught Error: Class "Tantrum\BuenasPracticas\Libro" not found in /home/tantrum/coding/php/buenas-practicas/public/index.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/tantrum/coding/php/buenas-practicas/public/index.php on line 8
+[Fri Jan 19 20:34:48 2024] 127.0.0.1:53148 Closing
+```
+
+Particularmente nos interesa este mensaje:
+`GET /public - Uncaught Error: Class "Tantrum\BuenasPracticas\Libro" not found in /home/tantrum/coding/php/buenas-practicas/public/index.php`
+
+**¿A qué se debe esto?**
+**Respuesta:** No hemos incluído el `namespace` en nuestro archivo `Libro.php`
+
+Al agregarlo de la siguiente forma:
+
+```php
+<?php
+namespace Tantrum\BuenasPracticas;
+class Libro {
+    ...
+```
+Nos deshacemos de ese error.
+
+**NOTA:** Es muy importante agregar nuestro namespace a nuestras clases, ya que el autoload de composer lo requiere.
+
+Finalmente, una vez corregido esto, podremos ver nuestra aplicación funcionando.

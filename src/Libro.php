@@ -1,4 +1,5 @@
 <?php
+namespace Tantrum\BuenasPracticas;
 class Libro {
     private $titulo;
     private $autor;
