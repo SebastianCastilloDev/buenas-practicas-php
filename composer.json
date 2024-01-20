@@ -24,10 +24,7 @@
     },
     "config": {
         "allow-plugins": {
-            "phpro/grumphp": true
-        },
-        "platform": {
-            "php": "8.2.4"
+            "phpro/grumphp": false
         }
     }
 }

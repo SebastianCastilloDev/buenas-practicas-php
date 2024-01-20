@@ -340,12 +340,5 @@ Crearemos el siguiente archivo de configuración
 
 para ejecutar nuestro análisis lo haremos con el siguiente comando.
 
-vendor/bin/phpmd . ansi
+`vendor/bin/phpmd src ansi dev/tools/phpmd.xml`
 
-
-## GrumPHP:
-
-Utiliza git hooks para realizar un análisis conjunto con todas las herramientas anteriores.
-
-**Instalacion:**
-`composer require --dev phpro/grumphp`
