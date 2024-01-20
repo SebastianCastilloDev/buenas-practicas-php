@@ -10,20 +10,20 @@ No es una guía estricta, son recomendaciones.
 
 ## Tabla de contenidos
 
-[Introducción](#introducción)
-**Primera parte: Creando un proyecto para realizar pruebas**
+[Introducción](#introducción)  
+**Primera parte: Creando un proyecto para realizar pruebas**  
 [Composer](#composer)  
 [Iniciando un proyecto](#iniciando-un-proyecto)  
 [Creando una clase](#creando-una-clase)  
 [Creando un index.php](#creando-un-indexphp)  
 [Importancia del namespace](#importancia-del-namespace)  
-**Segunda parte: Implementando herramientas de calidad del código**
-[PSR-12](#psr-12)
-[PHPCS](#phpcs)
-[PHPCS-fixer](#phpcs-fixer)
-[PHPStan](#phpstan)
-[PHPmd](#phpmd)
-[Herramienta Bash](#bash-script)
+**Segunda parte: Implementando herramientas de calidad del código**  
+[PSR-12](#psr-12)  
+[PHPCS](#phpcs)  
+[PHPCS-fixer](#phpcs-fixer)  
+[PHPStan](#phpstan)  
+[PHPmd](#phpmd)  
+[Herramienta Bash](#bash-script)  
 
 ## Introducción
 
