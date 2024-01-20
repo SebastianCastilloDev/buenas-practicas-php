@@ -6,6 +6,7 @@ class Libro {
     public function __construct($titulo, $autor) {
         $this->titulo = $titulo;
         $this->autor = $autor;
+        var_dump('Se ha creado un nuevo libro');
     }
     public function getTitulo() {
         return $this->titulo;

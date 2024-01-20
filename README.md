@@ -240,6 +240,29 @@ Para la implementación de estas herramientas, crearemos una carpeta en la la ra
 
 
 ## PHPCS:
+https://github.com/squizlabs/PHP_CodeSniffer
+
+Podemos crear un [archivo de configuracion](), pero en este caso sólo lo haremos por la terminal, ya que con indicarle que standard queremos revisar, podremos obtener los resultados que deseamos respecto a PSR12. Por simplicidad, utilizaremos la versión 3.8. Pero esto no es algo estricto.
+
+**Instalacion:**
+`composer require --dev "squizlabs/php_codesniffer=3.8"`
+De acuerdo a su documentación: 
+
+PHP_CodeSniffer es un conjunto de dos scripts PHP. 
+
+El script principal `phpcs` que tokeniza archivos PHP, JavaScript y CSS para detectar violaciones de un estándar de codificación definido.
+
+Y un segundo script `phpcbf` para corregir automáticamente las violaciones del estándar de codificación. 
+
+**NOTA:** Utilizaremos PHPCS sólo con archivos PHP.
+
+Para nuestros fines ejecutaremos los script de la siguiente manera:
+
+**Para revisar el código:**
+`vendor/bin/phpcs --standard=PSR12 --extensions=php --ignore=vendor/ .`
+
+**Para corregir el código:**
+`vendor/bin/phpcbf --standard=PSR12 --extensions=php --ignore=vendor/ .`
 
 ## PHPCS Fixer:
 https://github.com/PHP-CS-Fixer/PHP-CS-Fixer
@@ -261,6 +284,11 @@ Para ver que archivos serán modificados sin realizar las modificaciones directa
 Una vez ejecutado el script podremos visualizar los cambios directamente en los archivos.
 
 ## PHPStan:
+
+https://phpstan.org/
+
+**Instalación:**
+`composer require --dev phpstan/phpstan`
 
 ## PHPMD:
 
