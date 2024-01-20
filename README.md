@@ -7,12 +7,12 @@ No es una guía estricta, son recomendaciones.
 
 ## Tabla de contenidos
 
-[Buenas prácticas con PHP](#buenas-prácticas-con-php)
-[Composer](#composer)
-[Iniciando un proyecto](#iniciando-un-proyecto)
-[Creando una clase](#creando-una-clase)
-[Creando un index.php](#creando-un-indexphp)
-[Importancia del namespace](#importancia-del-namespace)
+[Buenas prácticas con PHP](#buenas-prácticas-con-php) 
+[Composer](#composer) 
+[Iniciando un proyecto](#iniciando-un-proyecto) 
+[Creando una clase](#creando-una-clase) 
+[Creando un index.php](#creando-un-indexphp) 
+[Importancia del namespace](#importancia-del-namespace) 
 
 
 
