@@ -7,15 +7,28 @@ No es una guía estricta, son recomendaciones.
 
 ## Tabla de contenidos
 
-[Buenas prácticas con PHP](#buenas-prácticas-con-php)  
+[Introducción](#introducción)
+**Primera parte: Creando un proyecto para realizar pruebas**
 [Composer](#composer)  
 [Iniciando un proyecto](#iniciando-un-proyecto)  
 [Creando una clase](#creando-una-clase)  
 [Creando un index.php](#creando-un-indexphp)  
 [Importancia del namespace](#importancia-del-namespace)  
+**Segunda parte: Implementando herramientas de calidad del código**
 
-# Introducción
+## Introducción
 
+La adopción de estándares, como PSR-12 (Coding Style Guide), es crucial para mantener consistencia en el código fuente y mejorar la legibilidad. Herramientas como PHPCS Fixer, PHPCS, PHPStan, PHPMD y GrumPHP son esenciales para garantizar el cumplimiento de estos estándares y la calidad del código.
+
+* PHPCS Fixer: Automatiza la corrección de problemas de estilo según las reglas definidas por PSR-12, asegurando uniformidad en el código.
+
+* PHPCS: Verifica el cumplimiento de estándares de codificación, identificando posibles mejoras y garantizando coherencia en el estilo del código.
+
+* PHPStan: Realiza análisis estático para descubrir posibles errores y mejorar la calidad del código, identificando problemas antes de la ejecución.
+
+* PHPMD: Busca posibles problemas en el código fuente mediante reglas predefinidas, promoviendo buenas prácticas y señalando áreas de mejora.
+
+* GrumPHP: Automatiza la ejecución de estas herramientas en cada confirmación, proporcionando una capa adicional de verificación y garantizando la calidad del código a lo largo del tiempo.
 
 
 **Nota: Se recomienda el uso del idioma inglés al momento de desarrollar.**
@@ -25,13 +38,12 @@ Lo anterior tiene dos razones, la primera es que es por lejos el idioma más ext
 `sail artisan make:migration add_rut_to_users_table`
 
 
-# Composer
+## Composer
 
 Composer es una herramienta de línea de comandos desarrollada para manejar las dependencias en proyectos PHP. Permite a los desarrolladores declarar las bibliotecas de las que depende su proyecto y gestiona automáticamente la instalación y actualización de estas dependencias. Composer utiliza un archivo llamado "composer.json" para definir las dependencias y sus versiones específicas.
 
 Además de gestionar dependencias, Composer también puede manejar la carga automática de clases (autoload), lo que simplifica la inclusión de archivos de clases en un proyecto PHP.
 
-En resumen, Composer simplifica el proceso de gestión de dependencias y facilita la creación y mantenimiento de proyectos PHP al proporcionar una forma estructurada de definir y cargar bibliotecas externas.
 
 ## Iniciando un proyecto
 
@@ -219,3 +231,37 @@ Nos deshacemos de ese error.
 **NOTA:** Es muy importante agregar nuestro namespace a nuestras clases, ya que el autoload de composer lo requiere.
 
 Finalmente, una vez corregido esto, podremos ver nuestra aplicación funcionando.
+
+# PSR-12
+
+https://www.php-fig.org/psr/psr-12/
+
+Para la implementación de estas herramientas, crearemos una carpeta en la la raiz del proyecto `dev/tools`, donde dejaremos nuestras herramientas. 
+
+
+## PHPCS:
+
+## PHPCS Fixer:
+https://github.com/PHP-CS-Fixer/PHP-CS-Fixer
+
+**Instalación**
+`composer require --dev friendsofphp/php-cs-fixer`
+
+podemos crear un [archivo de configuración](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/config.rst), pero por simpleza lo haremos sólo por comandos de la terminal, ya que por defecto PHPCS Fixer utilizará el conjunto de [reglas PSR12](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/ruleSets/PSR12.rst).
+
+Además PHPCS Fixer ignorará por defecto la carpeta vendor y cualquier archivo o directorio oculto de configuracion, tales como .vscode
+
+El comando a utilizar será:
+`./vendor/bin/php-cs-fixer fix .`
+**Advertencia:** Este comando realizará TODOS los cambios en los archivos que coincidan con la ruta proporcionada.
+
+Para ver que archivos serán modificados sin realizar las modificaciones directamente le podemos pasar el flag `--dry-run`
+`./vendor/bin/php-cs-fixer --dry-run fix .`
+
+Una vez ejecutado el script podremos visualizar los cambios directamente en los archivos.
+
+## PHPStan:
+
+## PHPMD:
+
+## GrumPHP:

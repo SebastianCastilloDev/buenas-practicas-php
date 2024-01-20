@@ -1,7 +1,7 @@
 <?php
 namespace Tantrum\BuenasPracticas;
 class Libro {
-    private $titulo;
+  private $titulo;
     private $autor;
     public function __construct($titulo, $autor) {
         $this->titulo = $titulo;
