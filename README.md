@@ -1,5 +1,8 @@
 # Buenas prácticas con PHP
 
+Para llevar a cabo las buenas prácticas de escritura de código nos apoyaremos de un conjunto de herramientas, para ello hemos desarrollado un [script](#bash-script) que nos permitirá llevar a cabo esta tarea. En este documento examinaremos la creación de un proyecto de prueba con composer, para poder ejecutar herramientas de análisis de código.
+
+
 Esta es una guía basada en diversa documentación y en la lista de reproduccion de Miguel Ángel López en su canal de Youtube. 
 [Enlace al canal](https://www.youtube.com/playlist?list=PL3birzc_gcN5LRB9h3yZbzBVSazuWWjQI)
 
@@ -15,6 +18,12 @@ No es una guía estricta, son recomendaciones.
 [Creando un index.php](#creando-un-indexphp)  
 [Importancia del namespace](#importancia-del-namespace)  
 **Segunda parte: Implementando herramientas de calidad del código**
+[PSR-12](#psr-12)
+[PHPCS](#phpcs)
+[PHPCS-fixer](#phpcs-fixer)
+[PHPStan](#phpstan)
+[PHPmd](#phpmd)
+[Herramienta Bash](#bash-script)
 
 ## Introducción
 
