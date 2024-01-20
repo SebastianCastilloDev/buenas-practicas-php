@@ -287,9 +287,38 @@ Una vez ejecutado el script podremos visualizar los cambios directamente en los 
 
 https://phpstan.org/
 
+Es una herramienta para hacer análisis estático del código.
+
 **Instalación:**
 `composer require --dev phpstan/phpstan`
 
+Para ejecutarlo con los checks más básicos ejecutaremos:
+`vendor/bin/phpstan analyse src`
+
+Para ejecutar un análisis más profundo podemos pasar el flag `--level`. Los niveles de rigurosidad se pueden revisar en este [enlace](https://phpstan.org/user-guide/rule-levels). Siendo 9 el nivel más alto, donde podremos, por ejemplo, analizar los tipos de datos utilizados en nuestro código. Entregándonos la siguiente salida:
+
+```
+------ --------------------------------------------------------------------------------------------------- 
+  Line   Libro.php                                                                                          
+ ------ --------------------------------------------------------------------------------------------------- 
+  :4     Property Tantrum\BuenasPracticas\Libro::$titulo has no type specified.                             
+  :5     Property Tantrum\BuenasPracticas\Libro::$autor has no type specified.                              
+  :6     Method Tantrum\BuenasPracticas\Libro::__construct() has parameter $autor with no type specified.   
+  :6     Method Tantrum\BuenasPracticas\Libro::__construct() has parameter $titulo with no type specified.  
+  :11    Method Tantrum\BuenasPracticas\Libro::getTitulo() has no return type specified.                    
+  :14    Method Tantrum\BuenasPracticas\Libro::getAutor() has no return type specified.                     
+ ------ ---------------------------------------------------------------------------------------------------
+ 
+ ```
+
+
+
 ## PHPMD:
+
+https://phpmd.org/
+
+**Instalación**:
+`composer require --dev phpmd/phpmd`
+
 
 ## GrumPHP:
