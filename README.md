@@ -342,3 +342,72 @@ para ejecutar nuestro análisis lo haremos con el siguiente comando.
 
 `vendor/bin/phpmd src ansi dev/tools/phpmd.xml`
 
+# Bash Script
+
+Este script Bash tiene la finalidad de proporcionar a los desarrolladores una interfaz interactiva para realizar diversas herramientas de análisis estático y formateo de código en proyectos PHP. Las herramientas incluyen PHPCS (PHP_CodeSniffer) para realizar un "code sniffing" según el estándar PSR-12, PHPCS Fixer (PHP-CS-Fixer) para corregir automáticamente las violaciones del estándar de codificación, PHPStan para realizar análisis estático del código con diferentes niveles de rigor, y PHPMD (PHP Mess Detector) para revisar el cumplimiento de los principios SOLID y las reglas de "code smells".
+
+El script guía al usuario a través de cada herramienta, preguntándole si desea ejecutarla y proporcionando opciones adicionales según sea necesario. Cada pregunta está resaltada con un fondo amarillo para mejorar la legibilidad. El flujo de trabajo del script permite al usuario elegir qué herramientas ejecutar y en qué orden, proporcionando una interfaz sencilla y amigable para realizar las tareas de análisis y formateo de código en proyectos PHP.
+
+**ADVERTENCIA:**
+**ESTE SCRIPT REQUIERE QUE LAS HERRAMIENTAS ESTEN INSTALADAS**
+**ASI COMO TAMBIEN DE LA EXISTENCIA DE EL ARCHIVO [phpmd.xml](/dev/tools/phpmd.xml)**
+
+
+```bash
+#!/bin/bash
+
+while true; do
+    # Preguntar al usuario si desea ejecutar PHPCS
+    echo
+    echo -e "\033[43m¿Deseas ejecutar PHPCS para Code Sniffing?\033[0m" 
+    read -p "(y/n): " answer_phpcs
+    if [ "$answer_phpcs" == "y" ]; then
+        # Ejecución de PHPCS
+        ./vendor/bin/phpcs --standard=PSR12 --extensions=php --ignore=vendor/ .
+    else
+        echo
+        echo "Script terminado."
+        exit 0
+    fi
+
+    # Preguntar al usuario si desea ejecutar PHPCS Fixer
+    echo
+    echo -e "\033[43m¿Deseas ejecutar PHPCS Fixer?\033[0m"
+    read -p "(y/n): " answer_phpcs_fixer
+    if [ "$answer_phpcs_fixer" == "y" ]; then
+        # Ejecución de PHPCS Fixer
+        ./vendor/bin/php-cs-fixer fix .
+    else
+        break
+    fi
+done
+
+# Preguntar al usuario el nivel para PHPStan
+echo
+echo -e "\033[43m¿Deseas ejecutar PHPStan con análisis avanzado?\033[0m"
+read -p "(y/n): " answer_phpstan
+if [ "$answer_phpstan" == "y" ]; then
+    read -p "Ingresa el nivel de análisis para PHPStan (1-9): " phpstan_level
+    # Ejecución de PHPStan con el nivel especificado
+    ./vendor/bin/phpstan analyse src --level=$phpstan_level
+else
+    echo
+    echo "Script terminado."
+    exit 0
+fi
+
+# Preguntar al usuario si desea ejecutar PHPMD
+echo
+echo -e "\033[43m¿Deseas ejecutar PHPMD?\033[0m"
+read -p "(y/n): " answer_phpmd
+if [ "$answer_phpmd" == "y" ]; then 
+    # Ejecución de PHPMD
+    ./vendor/bin/phpmd src ansi dev/tools/phpmd.xml
+else
+    echo
+    echo "Script terminado."
+    exit 0
+fi
+echo
+echo "Script finalizado con éxito."
+```
