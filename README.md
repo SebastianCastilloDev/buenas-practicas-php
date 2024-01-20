@@ -315,10 +315,37 @@ Para ejecutar un análisis más profundo podemos pasar el flag `--level`. Los ni
 
 ## PHPMD:
 
+Esta herramienta nos permitirá revisar si se cumple con los principios SOLID y con la calistenia de objetos
+
 https://phpmd.org/
 
 **Instalación**:
 `composer require --dev phpmd/phpmd`
 
+Crearemos el siguiente archivo de configuración
+
+`dev/tools/phpmd.xml`
+
+```xml
+<?xml version="1.0"?>
+<ruleset>
+    <rule ref="rulesets/cleancode.xml"/>
+    <rule ref="rulesets/codesize.xml"/>
+    <rule ref="rulesets/controversial.xml"/>
+    <rule ref="rulesets/design.xml"/>
+    <rule ref="rulesets/naming.xml"/>
+    <rule ref="rulesets/unusedcode.xml"/>
+</ruleset>
+```
+
+para ejecutar nuestro análisis lo haremos con el siguiente comando.
+
+vendor/bin/phpmd . ansi
+
 
 ## GrumPHP:
+
+Utiliza git hooks para realizar un análisis conjunto con todas las herramientas anteriores.
+
+**Instalacion:**
+`composer require --dev phpro/grumphp`

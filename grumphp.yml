@@ -1,0 +1,5 @@
+grumphp:
+    tasks:
+        phpcsfixer2:
+            config: .php_cs.dist
+            
